@@ -1,0 +1,10 @@
+{
+    "cucumberautocomplete.steps": [
+        "cypress/integration/examples/BDD/ecommerce/*.js"
+      ],
+      
+   "cucumberautocomplete.syncfeatures": "cypress/integration/examples/BDD/*.feature",
+   "cucumberautocomplete.strictGherkinCompletion": true,
+   "cucumberautocomplete.smartSnippets": true,
+   "cucumberautocomplete.stepsInvariants": true
+}
