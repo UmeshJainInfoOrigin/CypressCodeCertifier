@@ -16,8 +16,13 @@ async function setupNodeEvents(on, config) {
 module.exports = defineConfig({
 
   defaultCommandTimeout: 6000,
+
   env: {
     url: "https://rahulshettyacademy.com",
+    apiPost: "http://216.10.245.166/Library/Addbook.php",
+    apiGet: "http://216.10.245.166/Library/GetBook.php?ID=Umesh14278674"
+    
+    
   },
   retries: {
     runMode: 1,
@@ -27,10 +32,9 @@ module.exports = defineConfig({
 
   e2e: {
     setupNodeEvents,
-    specPattern: 'cypress/integration/examples/BDD/**/*.feature'
+    specPattern: 'cypress/integration/examples/**/*.{feature,js}'
     
 
   },
 });
 
-//messages -> json file ->html

@@ -22,7 +22,6 @@ Cypress.Commands.add("selectProduct", (productName) => {
         
         })
 
-
 })
 
 //

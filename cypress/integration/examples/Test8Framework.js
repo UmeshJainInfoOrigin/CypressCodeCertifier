@@ -1,6 +1,8 @@
 /// <reference types="Cypress" />
 import HomePage from '../../support/pageObjects/HomePage'
 import ProductPage from '../../support/pageObjects/ProductPage'
+import ProtoCommerce from '../../support/pageObjects/ProtoCommerce'
+
 describe('My Second Test Suite', function () {
 
   before(function () {
@@ -15,6 +17,7 @@ describe('My Second Test Suite', function () {
   it('My FirstTest case', function () {
     const homePage = new HomePage()
     const productPage = new ProductPage()
+    const protoCommerce = new ProtoCommerce()
    cy.visit(Cypress.env('url')+"/angularpractice/")
     homePage.getEditBox().type(this.data.name)
     homePage.getGender().select(this.data.gender)
@@ -23,10 +26,6 @@ describe('My Second Test Suite', function () {
     homePage.getEntrepreneaur().should('be.disabled')
     homePage.getShopTab().click()
     Cypress.config('defaultCommandTimeout',8000)
-
-
-
-
 
     this.data.productName.forEach(function (element) {
 
@@ -46,13 +45,16 @@ describe('My Second Test Suite', function () {
     }).then(function () {
       cy.log(sum)
     })
-    cy.get('h3 strong').then(function (element) {
+    protoCommerce.getProductTotal().then(function (element) {
       const amount = element.text()
       var res = amount.split(" ")
       var total = res[1].trim()
       expect(Number(total)).to.equal(sum)
 
     })
+    
+        
+
     cy.contains('Checkout').click()
     cy.get('#country').type('India')
     cy.get('.suggestions > ul > li > a').click()

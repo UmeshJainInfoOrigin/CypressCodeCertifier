@@ -1,5 +1,8 @@
 Framework Architectre for UI/API/ETL
 ====================
+Javascript executes its code in async mode and cypress run in sync mode. Whenever we code has combined code, need to resolve promise/call function. Javascripts functions which requires promises are text(), trim()
+
+As a rule of thumb anything you call from Cypress affects global state. Anything you call from cy affects local state.
 
 The following documentation describes a structures, common code and configuratin requires 
 
@@ -82,6 +85,21 @@ It gives you online access to your recorded test results.
 * ProjectId - needs to added in cypress.config.js
 * record key - needs to passed while executing the feature file
 
+# Environment Variables
+This can be set in cypress.config.js 
+Example 
+env: {
+    url: "https://google.com",
+  }
+and can be accessible via Cypress.env('url')
+env json is not accepting level two json like
+env :{
+  pom :{
+    apiPost : '',
+    apiGet : ''
+  }
+}
+if users uses Cypress it will have global access and if user uses cy then it has local access
 
 
 # Coding standards 
@@ -97,6 +115,12 @@ It gives you online access to your recorded test results.
 
 ## File names
 All file names and folders should follow the camel case naming convention 
+
+## Function signature
+Call back functions should be written like 
+function () {}
+Avoid using writing ES6 way as mocha doesn't support it, like
+() => {}
 
 ## Directory
 It should be created based on application functionality and would have 

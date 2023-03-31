@@ -25,6 +25,13 @@ getShopTab()
     return  cy.get(':nth-child(2) > .nav-link')
 }
 
+getProductTotal()
+{
+    cy.get('h3 strong').then(function (element) {
+        return element.text()
+    })
+}
+
 }
 
 export default HomePage;
