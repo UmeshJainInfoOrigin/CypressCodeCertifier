@@ -15,6 +15,8 @@ The following documentation describes a structures, common code and configuratin
 * npm
 * npx
 * ESLint
+* cypress-sql-server
+
 
 
 ## javascript
@@ -23,7 +25,13 @@ example
 cy.get('h3 strong').then(function (element) {
       const amount = element.text()
 
-
+## Sql Server
+* 1 Download the sql server using
+npm install --save-dev cypress-sql-server
+* 2 Initialize the plug-in in cyress.config.js under setupNodeEvents
+* 3 In e2e.js add below two lines
+import sqlServer from 'cypress-sql-server';
+sqlServer.loadDBCommands();
 
 ## Npm
 

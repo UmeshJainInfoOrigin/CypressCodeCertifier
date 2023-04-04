@@ -1,10 +1,10 @@
 /// <reference types="Cypress" />
  
-describe('My First Test Suite', function() 
+describe('Intercept the API call', function() 
 {
  
-it('My FirstTest case',function() {
- 
+it('Example of Get Intercept',function() {
+    console.log('intercept.js-->IT-->Example of Get Intercept')
     cy.visit("https://rahulshettyacademy.com/angularAppdemo/");
  //first parameter is request and second is response
  //https://docs.cypress.io/api/commands/intercept#Request-object-properties
@@ -29,14 +29,6 @@ it('My FirstTest case',function() {
  
  
      //length of the response array = rows of the table
- 
- 
- 
- 
- 
- 
- 
- 
  
  
 })

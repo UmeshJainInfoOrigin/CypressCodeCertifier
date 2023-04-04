@@ -33,9 +33,11 @@ When('Validate the total prices', () => {
         res = res[1].trim()
         sum = Number(sum) + Number(res)
 
-    }).then(function () {
-        cy.log(sum)
+    }).then (function () {
+        cy.log('sumis=', sum)
     })
+     
+    
     cy.get('h3 strong').then(function (element) {
         const amount = element.text()
         var res = amount.split(" ")
