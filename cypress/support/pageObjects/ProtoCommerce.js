@@ -1,4 +1,4 @@
-class ProtoCommerce
+class protoCommerce
 {
 getProductTotal()
 {
@@ -7,4 +7,4 @@ getProductTotal()
 
 }
 
-export default ProtoCommerce;
+export default protoCommerce;

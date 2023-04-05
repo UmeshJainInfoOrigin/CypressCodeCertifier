@@ -1,12 +1,12 @@
 /// <reference types="Cypress" />
-import HomePage from '../../../../support/pageObjects/HomePage'
-import ProductPage from '../../../../support/pageObjects/ProductPage'
+import {onHomePage} from '../../../support/pageObjects/homePage'
+import {onProductPage} from '../../../support/pageObjects/productPage'
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 //cypress run --spec cypress\integration\examples\BDD\*.feature --headed --browser chrome
 //npx cypress-tags run -e TAGS="@Smoke" --headed --browser chrome
 // npx cypress run --spec cypress/integration/examples/BDD/*.feature --headed --browser chrome --env url="https://google.com"
-const homePage = new HomePage()
-const productPage = new ProductPage()
+//const homePage = new HomePage()
+//const productPage = new ProductPage()
 let name = "umesh"
 // Given('II open ECommerce Page', () => {
 //     cy.visit(Cypress.env('url') + "/angularpractice/")
@@ -14,12 +14,12 @@ let name = "umesh"
 
 // When I add items to Cart
 When('II add items to Cart', function () {
-    homePage.getShopTab().click()
+    onHomePage.getShopTab().click()
 
     this.data.productName.forEach(function (element) {
         cy.selectProduct(element)
     });
-    productPage.checkOutButton().click()
+    onProductPage.checkOutButton().click()
 })
 
 //And Validate the total prices
@@ -62,19 +62,19 @@ When('II fill the form details', function (dataTable) {
 
     // [bobz , male   ]
     name = dataTable.rawTable[1][0]
-    homePage.getEditBox().type(dataTable.rawTable[1][0])
-    homePage.getGender().select(dataTable.rawTable[1][1])
+    onHomePage.getEditBox().type(dataTable.rawTable[1][0])
+    onHomePage.getGender().select(dataTable.rawTable[1][1])
 })
 // Then validate the forms behaviour
 Then('II validate the forms behaviour', function () {
-    homePage.getTwoWayDataBinding().should('have.value', name)
-    homePage.getEditBox().should('have.attr', 'minlength', '2')
-    homePage.getEntrepreneaur().should('be.disabled')
+    onHomePage.getTwoWayDataBinding().should('have.value', name)
+    onHomePage.getEditBox().should('have.attr', 'minlength', '2')
+    onHomePage.getEntrepreneaur().should('be.disabled')
     Cypress.config('defaultCommandTimeout', 8000)
 })
 // And select the Shop Page
 Then('II select the Shop Page', () => {
-    homePage.getShopTab().click()
+    onHomePage.getShopTab().click()
 })
 
 

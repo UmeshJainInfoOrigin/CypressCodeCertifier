@@ -32,7 +32,7 @@ async function setupNodeEvents(on, config) {
 module.exports = defineConfig({
 
   defaultCommandTimeout: 6000,
-
+  
   env: {
     url: "https://rahulshettyacademy.com",
     apiPost: "http://216.10.245.166/Library/Addbook.php",
@@ -49,11 +49,13 @@ module.exports = defineConfig({
     runMode: 1,
 
   },
-  projectId: "nodpcq",
-
+  //Cypress Cloud, project CypressCodeCertifier
+  projectId: "ac7j1u",
+  viewportHeight: 1080,
+  viewportWidth: 1920,
   e2e: {
     setupNodeEvents,
-    specPattern: 'cypress/integration/examples/BDD/**/*.feature'
+    specPattern: 'cypress/integration/examples/angularTestApp/*.feature'
   },
 });
 

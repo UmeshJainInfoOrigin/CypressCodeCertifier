@@ -7,13 +7,17 @@
     "test": "npx cypress run",
     "headTest": "npm run test --headed",
     "chromeTest": "npm run test --browser chrome",
-    "recordDashBoardTest": "npm run test --record --key fa423514-5a84-42a7-b6a0-b5e7191bba12 --reporter mochawesome",
-    "GreenKartTest": "npm run test --spec \"cypress/integration/GreenKart/*\""
+    "recordDashBoardTest": "npm run test --record --key 1e4da9b7-1e68-4fb0-9f57-63fa89025425 --reporter mochawesome --spec cypress/integration/examples/BDD/*.feature",
+    "greenKartTest": "npm run test --spec \"cypress/integration/GreenKart/*\"",
+    "tag": "npx cypress-tags run -e TAGS='@Smoke' --headed --browser chrome",
+    "env": "npx cypress run --spec cypress/integration/examples/BDD/*.feature --headed --browser chrome --env url='https://google.com'"
+
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
     "stepDefinitions": [
-      "cypress/integration/examples/BDD/**/*.{js,ts}"
+      "cypress/integration/examples/angularTestApp/*.js"
+      
     ],
     "json": {
       "enabled": true,

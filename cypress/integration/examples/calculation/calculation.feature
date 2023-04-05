@@ -1,7 +1,7 @@
 Feature: End to end Ecommerce validation
 
 
-
+    C1~CS1~A1~F9
     application Regression
     @Regression
     Scenario: Ecommerce products delivery

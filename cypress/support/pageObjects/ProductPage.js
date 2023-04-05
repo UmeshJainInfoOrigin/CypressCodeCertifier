@@ -1,9 +1,8 @@
-class ProductPage
-{
+export class productPage {
 
-checkOutButton()
-{
-    return cy.get('#navbarResponsive > .navbar-nav > .nav-item > .nav-link')
+    checkOutButton() {
+        return cy.get('#navbarResponsive > .navbar-nav > .nav-item > .nav-link')
+    }
 }
-}
-export default ProductPage;
+
+export const onProductPage = new productPage()
