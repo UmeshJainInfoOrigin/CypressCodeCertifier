@@ -1,4 +1,6 @@
+import {onDatePickerPage} from '../../../support/pageObjects/datepickerPage';
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+
 
 Given('Actor on Test App home page', function () {
   console.log('Actor on Test App home page')
@@ -171,7 +173,7 @@ When('Actor select Dark mode', function () {
 
 })
 
-Then('Actor verifies Dark mode is implemented', function () {
+Then('Actor verifies Dark mode is implemented',  () => {
   cy.log('Actor verifies Dark mode is implemented')
   //#1
   cy.get('nb-layout-header nav').should('have.css', 'background-color', 'rgb(34, 43, 69)')
@@ -319,4 +321,29 @@ Then('Actor verify details of each tree', function() {
 
    })
   
+})
+
+When('Actor click on Forms and Date picker', function () {
+  cy.log('Actor click on Form menu')
+  cy.contains('Forms').click()
+  cy.contains('Datepicker').click()
+})
+
+
+When("Actor select {int} days ahead from Common Datepicker", (day) =>{
+      onDatePickerPage.selectCommonDatepickerDateFromToday(day)
+      onDatePickerPage.selectCommonDatepickerDateFromToday(day)
+  
+})
+
+When("Actor select range from {int} to {int} days from current", (fromDays, toDays)=> {
+  //cy.get('input[placeholder="Range Picker"]').click()
+  onDatePickerPage.selectDatepickerWithRangeFromToday(fromDays, toDays)
+})
+
+Then ("Actor capture the baseline image for comparion next time", () =>{
+  cy.contains('nb-card', 'Using the Grid').then( firstForm => {
+    cy.wrap(firstForm).toMatchImageSnapshot()
+    cy.document().toMatchImageSnapshot()
+})
 })

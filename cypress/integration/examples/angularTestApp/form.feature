@@ -50,3 +50,17 @@ Scenario: Tree Grid validation
 Given Actor on Test App home page
 When Actor click on Table&Data Tree Grid   
 Then Actor verify details of each tree
+
+Scenario: Date component
+Given Actor on Test App home page
+When Actor click on Forms and Date picker
+When Actor select 5 days ahead from Common Datepicker
+When Actor select -5 days ahead from Common Datepicker
+When Actor select range from -5 to 10 days from current
+When Actor select range from 105 to 400 days from current
+
+Scenario: Visual Testing
+Given Actor on Test App home page
+When Actor click on Form menu
+When Actor click on Form Layout Submenu
+Then Actor capture the baseline image for comparion next time

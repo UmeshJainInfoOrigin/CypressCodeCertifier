@@ -20,4 +20,6 @@ import './commands'
 
 //below lines is used to activate  the sql server
 import sqlServer from 'cypress-sql-server';
+import 'cypress-plugin-snapshots/commands';
+
 sqlServer.loadDBCommands();
