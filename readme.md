@@ -17,7 +17,10 @@ The following documentation describes a structures, common code and configuratin
 * ESLint
 * cypress-sql-server
 
-
+## Visual Testing
+Below two link used to setup the plugs
+https://github.com/meinaart/cypress-plugin-snapshots
+https://github.com/meinaart/cypress-plugin-snapshots/issues/54
 
 ## javascript
 Code uses javascript way of writing. Core javascript function needs to resolve the promise using then keywords
@@ -76,13 +79,14 @@ Mistakes can be caught at development time rather than deployment time and thus 
 
 Install all dependencies
 ```
-    npm install 
+    npm install --force
 ```
 
 ## Run
 
 To run the code :
-
+npx cypress open 
+or
     $ "test": "npx cypress run",
     $ "headTest": "npm run test --headed",
     $ "chromeTest": "npm run test --browser chrome",
@@ -138,3 +142,27 @@ It should be created based on application functionality and would have
 
 ## Common components
 All common re-components functions ( /integration/common/ ) must be presentable in this folder and action on component will be defined in command.js
+
+## application under test
+https://github.com/bondar-artem/ngx-cypress-test
+
+## Tag and push
+$ git tag v0.1.0 
+$ git push --tags
+
+## Install nodeJS in ubuntu
+* sudo apt install nodejs
+* node -v
+
+## Install chrome in ubuntu
+* sudo apt update
+* sudo apt upgrade
+* wget --version
+* wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+* sudo dpkg -i google-chrome-stable_current_amd64.deb
+* sudo chmod +x google-chrome-stable_current_amd64.deb
+* sudo dpkg -i google-chrome-stable_current_amd64.deb
+* sudo apt install -f
+* sudo dpkg -i google-chrome-stable_current_amd64.deb
+* google-chrome --version
+* google-chrome
