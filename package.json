@@ -9,7 +9,7 @@
     "chromeTest": "npm run test --browser chrome",
     "recordDashBoardTest": "npm run test --record --key bb9862d7-e9d1-469c-b32f-6ee9fcdfcdf5 --reporter mochawesome --spec cypress/integration/examples/BDD/*.feature",
     "greenKartTest": "npm run test --spec \"cypress/integration/GreenKart/*\"",
-    "tag": "npx cypress-tags run -e TAGS='@Smoke' --headed --browser chrome",
+    "tag": "npx cypress run --env tags='@Smoke' --headed --browser chrome",
     "env": "npx cypress run --spec cypress/integration/examples/BDD/*.feature --headed --browser chrome --env url='https://google.com'"
   },
   "cypress-cucumber-preprocessor": {
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
-    "cypress": "^12.0.0",
+    "cypress": "^12.6.0",
     "cypress-plugin-snapshots": "^1.4.4",
     "cypress-sql-server": "^1.0.0",
     "eslint": "^8.37.0",

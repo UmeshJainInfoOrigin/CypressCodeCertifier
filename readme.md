@@ -1,3 +1,8 @@
+# Why Cypress
+https://npmtrends.com/cypress
+https://www.cypress.io/how-it-works/
+https://docs.cypress.io/guides/references/changelog
+
 Framework Architectre for UI/API/ETL
 ====================
 Javascript executes its code in async mode and cypress run in sync mode. Whenever we code has combined code, need to resolve promise/call function. Javascripts functions which requires promises are text(), trim()
@@ -145,6 +150,7 @@ All common re-components functions ( /integration/common/ ) must be presentable 
 
 ## application under test
 https://github.com/bondar-artem/ngx-cypress-test
+https://www.automationteststore.com/
 
 ## Tag and push
 $ git tag v0.1.0 

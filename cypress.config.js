@@ -67,7 +67,9 @@ module.exports = defineConfig({
   viewportWidth: 1920,
   e2e: {
     setupNodeEvents,
-    specPattern: 'cypress/integration/examples/**/*.feature',
+    specPattern: [
+      'cypress/integration/examples/**/*.feature'
+    ],
     //to activate the visual testing
     excludeSpecPattern: [
       "**/__snapshots__/*",

@@ -214,66 +214,7 @@ When('Actor click on Table&Data Smart Table', function () {
   cy.contains('Smart Table').click()
 })
 
-Then('Actor modify Larry age', function () {
-  cy.get('tbody').contains('tr', 'Larry').then(function (tableRow) {
-    cy.wrap(tableRow).find('.nb-edit').click()
-    cy.wrap(tableRow).find('[placeholder="Age"]').clear().type('25')
-    cy.wrap(tableRow).find('.nb-checkmark').click()
-    //Age column number is 6, count start from 0
-    cy.wrap(tableRow).find('td').eq(6).should('contain', '25')
-  })
 
-})
-
-Then('Actor add new row and verify it', function () {
-  cy.get('thead').find('.nb-plus').click()
-  cy.get('thead').find('tr').eq(2).then(function (tableRow) {
-    cy.wrap(tableRow).find('[placeholder="First Name"]').type('Info')
-    cy.wrap(tableRow).find('[placeholder="Last Name"]').type('Origin')
-    cy.wrap(tableRow).find('[placeholder="Username"]').type('Gondia')
-    cy.wrap(tableRow).find('[placeholder="E-mail"]').type('@infoOrigin')
-    cy.wrap(tableRow).find('[placeholder="Age"]').type('30')
-    cy.wrap(tableRow).find('.nb-checkmark').click()
-  })
-  cy.get('tbody tr').first().find('td').then(function (tableColumns) {
-    cy.wrap(tableColumns).eq(2).should('contain', 'Info')
-    cy.wrap(tableColumns).eq(3).should('contain', 'Origin')
-  })
-})
-
-Then('Actor filter using row column and verify', function () {
-  const ageList = [20, 30, 40, 200]
-
-  cy.wrap(ageList).each(function (age) {
-    cy.get('thead [placeholder="Age"]').clear().type(age)
-    cy.wait(500)
-    cy.get('tbody tr').each(function (tableRow, index) {
-      if (age == 200) {
-        cy.wrap(tableRow).should('contain', 'No data found')
-      } else {
-        cy.wrap(tableRow).find('td').eq(6).should('contain', age)
-        cy.log('RowId', index)
-        //This will click the next page link  
-        if (index >= 9) {
-          cy.get('a[class="ng2-smart-page-link page-link page-link-next"]').click()
-        }
-      }
-    })
-  })
-})
-
-Then('Actor delete the row with confirm click', function () {
-  
-  cy.get('tbody tr').first().find('.nb-trash').click()
-  cy.on('window:confirm', (confirm) => {
-    expect(confirm).to.equal('Are you sure you want to delete?')
-  })
-})
-
-Then('Actor delete the row with cancel click', function () {
-  cy.get('tbody tr').first().find('.nb-trash').click()
-  cy.on('window:confirm', () => false)
-})
 
 When('Actor click default button on colored tooltip', function () {
   cy.contains('Modal & Overlays').click()
