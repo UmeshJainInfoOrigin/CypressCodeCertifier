@@ -13,7 +13,7 @@ let name = "umesh"
 // })
 
 // When I add items to Cart
-When('ACtor add items to Cart', function () {
+When('Actor add items to Cart', function () {
     onHomePage.getShopTab().click()
 
     this.data.productName.forEach(function (element) {

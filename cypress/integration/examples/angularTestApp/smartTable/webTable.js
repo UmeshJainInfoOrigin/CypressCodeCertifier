@@ -2,7 +2,7 @@ import { onSmartTable } from '../../../../support/pageObjects/smartTable';
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 Then('Actor modify {string} age', function (rowFirstName) {
-    onSmartTable.getTableBody().contains('tr', rowFirstName).then(function (tableRow) {
+    onSmartTable.getTableBodyHeader('tbody').contains('tr', rowFirstName).then(function (tableRow) {
         onSmartTable.getTableRowAction(tableRow, '.nb-edit').click()
         onSmartTable.getTableRowColumn(tableRow, 'Age').clear().type('25')
         onSmartTable.getTableRowAction(tableRow, '.nb-checkmark').click()
@@ -16,7 +16,7 @@ Then('Actor add new row and verify it', function (dataTable) {
     //cy.get('thead').find('.nb-plus').click()
     console.log(dataTable)
     onSmartTable.getPlusbtn().click()
-    onSmartTable.getTableHeader().find('tr').eq(2).then(function (tableRow) {
+    onSmartTable.getTableBodyHeader('thead').find('tr').eq(2).then(function (tableRow) {
         onSmartTable.getTableRowColumn(tableRow, 'First Name').type(dataTable.rawTable[1][0])
         onSmartTable.getTableRowColumn(tableRow, 'Last Name').type(dataTable.rawTable[1][1])
         onSmartTable.getTableRowColumn(tableRow, 'Username').type(dataTable.rawTable[1][2])
@@ -74,4 +74,38 @@ Then('Actor enter {word} {word} {word} in row', function (firstName, lastName, u
         onSmartTable.getTableRowColumn(tableRow, 'Age').type(20)
         onSmartTable.getTableRowAction(tableRow, '.nb-checkmark').click()
     })
+})
+
+Then("Actor optimise", (headerFlag=false) =>{
+    const tableHeader = [];
+    let tableLocator
+     cy.visit('http://localhost:4200/pages/tables/smart-table')
+    tableLocator = 'table'
+
+     //cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
+      //  tableLocator = 'table[class="table-display"]'
+        cy.getTableHeaderss(true, tableLocator).then(output =>{
+            console.log('output', output)
+        })
+
+        
+        
+//         if (headerFlag) {
+//             cy.get(tableLocator).find('thead').as('headerRow')
+//         }
+//         else{
+//         cy.get(tableLocator).find('tbody').as('headerRow')
+//         }
+
+//         cy.get('@headerRow')
+//         .find('tr')
+//         .eq(0)
+//         .find('th').each(($el,index, list) => {
+//             tableHeader.push($el.text())
+          
+//          }).then( () => {
+//     console.log(tableHeader)
+// })
+    
+        
 })

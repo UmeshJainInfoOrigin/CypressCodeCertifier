@@ -21,3 +21,8 @@ Examples:
     | firstName | lastName | userName |
     | Keyword  | Mouse | Pune  |
     | Monitor  | Printer | Gondia  |
+
+Scenario: WebTable Manipulations optimized
+#Given Actor on Test App home page
+#When Actor click on Table&Data Smart Table
+Then Actor optimise   

@@ -25,6 +25,26 @@ Cypress.Commands.add("selectProduct", (productName) => {
 
 })
 
+Cypress.Commands.add('getTableHeaderss', (headerFlag, tableLocator) => {
+    const tableHeader = []
+    if (headerFlag) {
+        cy.get(tableLocator).find('thead').as('headerRow')
+    }
+    else{
+    cy.get(tableLocator).find('tbody').as('headerRow')
+    }
+
+    cy.get('@headerRow')
+    .find('tr')
+    .eq(0)
+    .find('th').each(($el,index, list) => {
+        tableHeader.push($el.text())
+      
+     }).then( () => {
+        return tableHeader
+})
+})
+
 //
 // -- This is a child command --
 // Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
