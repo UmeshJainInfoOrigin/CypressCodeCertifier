@@ -43,7 +43,7 @@ module.exports = defineConfig({
   env: {
     url: "https://rahulshettyacademy.com",
     apiPost: "http://216.10.245.166/Library/Addbook.php",
-    apiGet: "http://216.10.245.166/Library/GetBook.php?ID=Umesh14278674",
+    apiGet: "http://216.10.245.166/Library/GetBook.php?ID=4oy89178674",
     allStatuscode: {
       statusCodeSuccessA: 200,
     },
@@ -65,6 +65,7 @@ module.exports = defineConfig({
   projectId: "ac7j1u",
   viewportHeight: 1080,
   viewportWidth: 1920,
+  experimentalStudio: true,
   e2e: {
     setupNodeEvents,
     specPattern: [

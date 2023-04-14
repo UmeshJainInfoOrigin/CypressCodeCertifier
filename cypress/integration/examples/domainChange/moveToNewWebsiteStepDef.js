@@ -1,11 +1,5 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-Given("Actor on {string} page", (subPage) => {
-    cy.log(subPage)
-    cy.visit(Cypress.env('url') + "/" + subPage + "/")
-
-})
-
 When("Actor click on Open Tab", () => {
 //Cypress not allow to move to different domain from parent domain due to security reason
 //cross domain is not support directly by Cypress, to support it they come up with cy.origin(   )

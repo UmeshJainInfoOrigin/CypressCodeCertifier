@@ -172,3 +172,21 @@ $ git push --tags
 * sudo dpkg -i google-chrome-stable_current_amd64.deb
 * google-chrome --version
 * google-chrome
+
+
+## locator
+<input _ngcontent-tyq-c19="" data-cy="imputEmail1" fullwidth="" id="inputEmail1" nbinput="" placeholder="Email" type="email" ng-reflect-full-width="" class="input-full-width size-medium shape-rectangle">
+
+At browser console
+$('#inputEmail1')
+$('.input-full-width')
+$('[placeholder="Email"]')
+$('[class="input-full-width size-medium shape-rectangle"]')
+$('input[placeholder="Email"]')
+$('[placeholder="Email"][type="email"]')
+$('input[placeholder="Email"]#inputEmail1.input-full-width')
+('[data-cy="imputEmail1"]')
+
+$x('//input[@placeholder="Type to Select Countries"]')
+* id
+$('#iframeResult')

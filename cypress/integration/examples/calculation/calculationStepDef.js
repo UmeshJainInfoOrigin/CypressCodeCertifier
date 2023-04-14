@@ -13,7 +13,7 @@ let name = "umesh"
 // })
 
 // When I add items to Cart
-When('II add items to Cart', function () {
+When('ACtor add items to Cart', function () {
     onHomePage.getShopTab().click()
 
     this.data.productName.forEach(function (element) {
@@ -23,7 +23,7 @@ When('II add items to Cart', function () {
 })
 
 //And Validate the total prices
-When('II Validate the total prices', () => {
+When('Actor Validate the total prices', () => {
     var sum = 0
     cy.get('tr td:nth-child(4) strong').each(($el, index, $list) => {
         const amount = $el.text()
@@ -45,7 +45,7 @@ When('II Validate the total prices', () => {
 
 //Then select the country submit and verify Thankyou
 
-Then('II select the country submit and verify Thankyou', () => {
+Then('Actor select the country submit and verify Thankyou', () => {
     cy.contains('Checkout').click()
     cy.get('#country').type('India')
     cy.get('.suggestions > ul > li > a').click()
@@ -58,7 +58,7 @@ Then('II select the country submit and verify Thankyou', () => {
     })
 })
 //When I fill the form details
-When('II fill the form details', function (dataTable) {
+When('Actor fill the form details', function (dataTable) {
 
     // [bobz , male   ]
     name = dataTable.rawTable[1][0]
@@ -66,14 +66,14 @@ When('II fill the form details', function (dataTable) {
     onHomePage.getGender().select(dataTable.rawTable[1][1])
 })
 // Then validate the forms behaviour
-Then('II validate the forms behaviour', function () {
+Then('Actor validate the forms behaviour', function () {
     onHomePage.getTwoWayDataBinding().should('have.value', name)
     onHomePage.getEditBox().should('have.attr', 'minlength', '2')
     onHomePage.getEntrepreneaur().should('be.disabled')
     Cypress.config('defaultCommandTimeout', 8000)
 })
 // And select the Shop Page
-Then('II select the Shop Page', () => {
+Then('Actor select the Shop Page', () => {
     onHomePage.getShopTab().click()
 })
 

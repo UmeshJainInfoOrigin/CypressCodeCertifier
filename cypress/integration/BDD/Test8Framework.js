@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
-import HomePage from '../../support/pageObjects/HomePage'
-import ProductPage from '../../support/pageObjects/ProductPage'
-import ProtoCommerce from '../../support/pageObjects/ProtoCommerce'
+import HomePage from '../../support/pageObjects/homePage'
+import ProductPage from '../../support/pageObjects/productPage'
+import ProtoCommerce from '../../support/pageObjects/protoCommerce'
 
 describe('My Second Test Suite', function () {
 

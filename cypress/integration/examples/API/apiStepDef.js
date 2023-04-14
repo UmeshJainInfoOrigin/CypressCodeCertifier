@@ -58,9 +58,9 @@ Given ('Actor calls Library API and read using AS keyword', function(){
  
  Then('Actor validate response using httpResponseCode json', function() {
         cy.request('GET', Cypress.env('apiGet')).then(function (response) {
-         console.log('fetched response from api', response)
+         console.log('fetched response from api httpResponseCode', response)
             expect(response.body[0], 'response body').to.include(
-                this.apiGetData)
+                apiGetData)
                 
             expect(response.status).to.eq(statusCodes.allStatusCode.statusCodeOK)
             console.log('end..')

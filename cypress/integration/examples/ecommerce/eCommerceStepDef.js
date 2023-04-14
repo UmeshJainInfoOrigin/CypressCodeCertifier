@@ -8,9 +8,7 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 //const homePage = new HomePage()
 //const productPage = new ProductPage()
 let name = "umesh"
-// Given('I open ECommerce Page', () => {
-//     cy.visit(Cypress.env('url') + "/angularpractice/")
-// })
+
 
 // When I add items to Cart
 When('I add items to Cart', function () {
