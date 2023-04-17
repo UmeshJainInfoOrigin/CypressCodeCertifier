@@ -1,13 +1,14 @@
 export class SmartTable{
+    getTableBodyHeader(whichSection){
+        return cy.get(whichSection)
+    }
     getPlusbtn() {
-        return getTableBodyHeader('thead').find('.nb-plus')
+        return this.getTableBodyHeader('thead').find('.nb-plus')
     }
     getHeaderAge() {
         return cy.get('thead [placeholder="Age"]')
     }
-    getTableBodyHeader(whichSection){
-        return cy.get(whichSection)
-    }
+    
     
     getTableRowColumn(tableRow, tableColumn) {
         //below line has (`) Acute not (') Apostrophe or single quote
@@ -21,10 +22,10 @@ export class SmartTable{
 
     getUsingtheGridEmail(jsonkey) {
         return cy.get('input[placeholder="Email"]#inputEmail1.input-full-width')
-        return cy.get(genertic)
+        
     }
 
-     getTableHeaders = (headerFlag, tableLocator) => {
+     getTableHeader  (headerFlag, tableLocator)  {
         const tableHeader = []
         if (headerFlag) {
             cy.get(tableLocator).find('thead').as('headerRow')
@@ -43,6 +44,10 @@ export class SmartTable{
     console.log(tableHeader)
             return tableHeader
     })
+    }
+
+    getTable(){
+        return cy.get('#autocomplete')
     }
     
 }

@@ -19,7 +19,20 @@ import './commands'
 // require('./commands')
 
 //below lines is used to activate  the sql server
+//import "cypress-ag-grid";
 import sqlServer from 'cypress-sql-server';
 import 'cypress-plugin-snapshots/commands';
 
+
 sqlServer.loadDBCommands();
+
+// Hide fetch/XHR requests
+const app = window.top;
+if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
+  const style = app.document.createElement('style');
+  style.innerHTML =
+    '.command-name-request, .command-name-xhr { display: none }';
+  style.setAttribute('data-hide-command-log-request', '');
+
+  app.document.head.appendChild(style);
+}

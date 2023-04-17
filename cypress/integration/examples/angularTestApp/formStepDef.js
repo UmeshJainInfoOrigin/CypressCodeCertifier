@@ -166,10 +166,10 @@ When('Actor select Dark mode', function () {
   // action:- item will be selected from the dropdown and assert as well
   // return:- all item of dropdown
   cy.log('Actor select Dark mode')
-  cy.get('nav nb-select').click()
-  cy.get('.options-list').contains('Dark').click()
-  cy.get('nav nb-select').should('contain', 'Dark')
-
+  // cy.get('nav nb-select').click()
+  // cy.get('.options-list').contains('Dark').click()
+  // cy.get('nav nb-select').should('contain', 'Dark')
+cy.selectItemStaticDropdown('nav nb-select', '.options-list', 'Dark')
 
 })
 
