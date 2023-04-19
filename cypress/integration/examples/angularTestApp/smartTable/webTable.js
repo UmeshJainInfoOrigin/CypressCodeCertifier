@@ -66,7 +66,7 @@ Then('Actor delete the row with cancel click', function () {
 
 Then('Actor enter {word} {word} {word} in row', function (firstName, lastName, userName) {
     onSmartTable.getPlusbtn().click()
-    onSmartTable.getTableHeader().find('tr').eq(2).then(function (tableRow) {
+    onSmartTable.getTableBodyHeader('thead').   find('tr').eq(2).then(function (tableRow) {
         onSmartTable.getTableRowColumn(tableRow, 'First Name').type(firstName)
         onSmartTable.getTableRowColumn(tableRow, 'Last Name').type(lastName)
         onSmartTable.getTableRowColumn(tableRow, 'Username').type(userName)

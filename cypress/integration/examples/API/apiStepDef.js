@@ -5,7 +5,10 @@ import statusCodes from '../../../fixtures/httpResponseCode.json'
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 const fixtureCommonJson = function () {
-   console.log('fixtureCommonJson')
+    if (Cypress.isBrowser('chrome')) {
+        console.log('fixtureCommonJson')
+        cy.log('fixtureCommonJson')
+    }
         cy.fixture('library/apiGet').then(function (apiGetData) {
             this.apiGetData = apiGetData
             console.log("response", this.apiGetData);
@@ -19,6 +22,10 @@ const fixtureCommonJson = function () {
       }
       
  Given('Actor calls Library API for posting data', function() {
+    if (Cypress.isBrowser('chrome')) {
+        console.log('Running in chrome')
+        cy.log('Running in chrome')
+    }
      console.log('Actor calls Library API for posting data')
              let r = (Math.random() + 1).toString(36).substring(7);
         cy.fixture('library/apiPost').then(function (apiPostData) {

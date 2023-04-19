@@ -5,6 +5,9 @@ const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify")
 const sqlServer = require('cypress-sql-server');
 //to activate the visual testing
 const { initPlugin } = require('cypress-plugin-snapshots/plugin');
+//this is required for Excel to JSON conversion
+const excelToJson = require('convert-excel-to-json');
+const fs = require('fs');
 
 
 async function setupNodeEvents(on, config) {
@@ -28,6 +31,19 @@ async function setupNodeEvents(on, config) {
   }
   tasks = sqlServer.loadDBPlugin(config.db);
   on('task', tasks);
+
+  //Below is required to use NodeJS instead of brower to read the file
+  on('task',{
+
+    excelToJsonConverter(filePath)
+    {
+      const result = excelToJson({
+      source: fs.readFileSync(filePath) // fs.readFileSync return a Buffer
+    });
+    return result;
+    }
+})
+
 
   //on('file:preprocessor', cucumber())
   on("file:preprocessor", browserify.default(config));
