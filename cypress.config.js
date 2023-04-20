@@ -57,6 +57,8 @@ module.exports = defineConfig({
   defaultCommandTimeout: 6000,
 
   env: {
+    userName:"cypress.config.js",
+    password: "cypress.config.js-password",
     url: "https://rahulshettyacademy.com",
     apiPost: "http://216.10.245.166/Library/Addbook.php",
     apiGet: "http://216.10.245.166/Library/GetBook.php?ID=4oy89178674",

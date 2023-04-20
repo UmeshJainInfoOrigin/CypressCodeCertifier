@@ -173,6 +173,53 @@ $ git push --tags
 * google-chrome --version
 * google-chrome
 
+## API needs token
+* call login API with userid and pwd to acquire the token
+* Set window.localStorage.setItem('token', token acquired in above step)
+* call API as token is already set to fetch the data
+Example
+1. https://angular.realworld.io/
+2. Sign-up or use exisiting credential
+3. Post call to https://conduit.productionready.io/api/users/login/ 
+  with body as
+  {
+    "user": {
+        "email": "umesh.jain@infoorigin.com",
+        "password": "GondiaRice@441601"
+    }
+}
+and header as
+Content-Type: application/json
+4. Store token from response
+{
+    "user": {
+        "email": "umesh.jain@infoorigin.com",
+        "username": "Umesh Jain",
+        "bio": null,
+        "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVtZXNoLmphaW5AaW5mb29yaWdpbi5jb20iLCJ1c2VybmFtZSI6IlVtZXNoIEphaW4iLCJpYXQiOjE2ODE5NjY4MDAsImV4cCI6MTY4NzE1MDgwMH0.jsXKc6xbBaoWBebZSw6saUxK13vDtDFLPURgUWNvCi0"
+    }
+}
+5. set this token to local Storage before calling subsequent API's
+Post call to  https://api.realworld.io/api/articles/
+header
+content-type: application/json
+body
+{
+  "article": {
+    "tagList": [],
+    "title": "Cypress Framework",
+    "description": "At my company",
+    "body": "Called solution accelerator"
+  }
+}
+
+## cypress.env.json
+This file override variables of cypress.config.js-->Env and for security reason this file should not be checkin as part of git repo
+Env variable priority is 
+1. Passed via URL like --env username='infoOrigin',password='Gondia'
+2. Passed via URL as process variable like --env username=$DB_USERNAME,password=$PASSWORD
+3. cypress.env.json overwrite available in cypress.config.js
 
 ## locator
 <input _ngcontent-tyq-c19="" data-cy="imputEmail1" fullwidth="" id="inputEmail1" nbinput="" placeholder="Email" type="email" ng-reflect-full-width="" class="input-full-width size-medium shape-rectangle">

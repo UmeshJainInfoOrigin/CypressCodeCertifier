@@ -132,6 +132,35 @@ Cypress.Commands.add('tableDataIntoJSON', (headerFlag=true, tableLocator) => {
     })
 })
 
+Cypress.Commands.add("LoginAPI",()=> {
+
+    cy.request("POST","https://rahulshettyacademy.com/api/ecom/auth/login",
+    {userEmail: "umesh.jain@infoorigin.com", userPassword: "GondiaRice@441601"}).
+    then(function(response)
+    {
+       expect(response.status).to.eq(200)
+       Cypress.env('token',response.body.token);
+       console.log(response.body)
+    })
+})
+
+
+Cypress.Commands.add("LoginToken",()=> {
+    const userCredentials = {
+        "user": {
+            "email": "umesh.jain@infoorigin.com",
+            "password": "GondiaRice@441601"
+        }
+    }
+    
+    cy.request("POST","https://conduit.productionready.io/api/users/login/",
+    userCredentials).its('body').then( body => {
+        const token = body.user.token
+        cy.wrap(token).as('token')
+    })
+})
+
+
 //
 // -- This is a child command --
 // Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })

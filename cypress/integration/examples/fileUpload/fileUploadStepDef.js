@@ -3,13 +3,15 @@ import {onFileUpload} from '../../../support/pageObjects/fileUpload'
 import neatCSV from 'neat-csv'
 
 
+
 Given("Actor on file upload page",(()=>{
     cy.visit("https://www.webdriveruniversity.com/File-Upload/index.html");
 })
 )
 
 When("Actor select file and click upload",(()=>{
-    cy.get("#myFile").selectFile("cypress/fixtures/example.json");
+// multiple files can be uploaded using ['file1.ext', 'files2.ext']
+    onFileUpload.getChooseFile().selectFile(['cypress/fixtures/example.json']);
     cy.get("#submit-button").click();
 })
 )

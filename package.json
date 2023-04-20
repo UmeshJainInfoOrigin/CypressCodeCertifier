@@ -11,7 +11,9 @@
     "greenKartTest": "npm run test --spec \"cypress/integration/GreenKart/*\"",
     "tag": "npx cypress run --env tags='@Smoke' --headed --browser chrome",
     "env": "npx cypress run --spec cypress/integration/examples/BDD/*.feature --headed --browser chrome --env url='https://google.com'",
-    "multibrowser": "npx cypress run --spec cypress/integration/examples/angularTestApp/smartTable/webTable.feature --headed --browser chrome & npx cypress run --spec cypress/integration/examples/angularTestApp/smartTable/webTable.feature --headed --browser electron"
+    "multibrowser": "npx cypress run --spec cypress/integration/examples/angularTestApp/smartTable/webTable.feature --headed --browser chrome & npx cypress run --spec cypress/integration/examples/angularTestApp/smartTable/webTable.feature --headed --browser electron",
+    "cy:open_dev": "npx cypress open --env userName=cytest3@test.com,password=Welcome000",
+    "cy:open_process": "npx cypress open --env userName=$DB_USERNAME,password=$PASSWORD"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
