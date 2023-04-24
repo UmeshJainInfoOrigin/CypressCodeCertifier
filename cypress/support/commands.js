@@ -16,16 +16,15 @@
 
 
 
-//Date:- Apr 2023
-//Author: Info Origin
-//Purpose: For static custom created dropdown, Actor will pass locator for
-//1 .downlown
-//2. locator for dynamic list
-//3. item to be selected
-// for standard windows drop down use below syntax
-//cy.get('select').select('option2').should('have.value','option2')
-// output:- Assertion item provided is selected
-
+/**
+ * Select item from Static or Dynamic dropdown
+ * for standard windows drop down use below syntax
+ * cy.get('select').select('option2').should('have.value','option2')
+ * @param locator of dropdown, opton list and item to be select
+ * @return item selected
+ * @author InfoOrigin
+ * @CreatedOn Apr 2023
+ */
 Cypress.Commands.add('selectItemStaticDropdown', (locatorDropdown,locatorOptionList,itemToSelect)=>{
     cy.get(locatorDropdown).click()
   cy.get(locatorOptionList).contains(itemToSelect).click()
@@ -40,6 +39,13 @@ Cypress.Commands.add('selectItemStaticDropdown', (locatorDropdown,locatorOptionL
 //2. locator for dynamic list
 //3. item to be selected
 // output:- Assertion item provided is selected
+/**
+ * @description Select item from Static or Dynamic dropdown
+ * @param locator of dropdown, opton list and item to be select
+ * @author InfoOrigin
+ * @returns Assertion on item provided and selected it
+ * @CreatedOn Apr 2023
+ */
 Cypress.Commands.add('selectItemDynamicDropdown', (locatorDropdown, locatorOptionList, itemToSelect)=>{
     //cy.get(locatorDropdown).type(itemToSelect.substring(0,3));
     locatorDropdown.type(itemToSelect.substring(0,3));
@@ -72,6 +78,14 @@ Cypress.Commands.add("selectProduct", (productName) => {
 //Purpose: Actor will pass Table locator and this function will return in arry all the header columns
 //if table is defined as <Table><Thead><Th></Th></Thead><Tbody></Tbody></Table> then headerFlag=true
 //if table is defined as <Table><Tbody><Th></Th></Tbody></Table> then headerFlag=false
+/**
+ * @description Actor will pass Table locator and this function will return in arry all the header columns
+ * if table is defined as <Table><Thead><Th></Th></Thead><Tbody></Tbody></Table> then headerFlag=true
+ * if table is defined as <Table><Tbody><Th></Th></Tbody></Table> then headerFlag=false
+ * @author InfoOrigin
+ * @CreatedOn Apr 2023
+ * @returns List of table headers
+ */
 Cypress.Commands.add('getTableHeader', (headerFlag=true, tableLocator) => {
     const tableHeader = []
     cy.get(`${tableLocator} thead` ).then(($el) => {
@@ -99,12 +113,14 @@ Cypress.Commands.add('getTableHeader', (headerFlag=true, tableLocator) => {
         return tableHeader
 })
 })
-
-//Date:- Apr 2023
-//Author: Info Origin
-//Purpose: Actor will pass Table locator
-//output :- Contain of complete table will be converted to JSON
-// keys of JSON will be header column
+/**
+ * @description This function will return JSON of webtable
+ * keys of JSON will be header column
+ * @param tableLocator and HeaderFlag=true if thead is defined
+ * @date Apr 2023 
+ * @author Info Origin
+ * @returns webtable values in JSON format
+ */
 Cypress.Commands.add('tableDataIntoJSON', (headerFlag=true, tableLocator) => {
     cy.getTableHeader(headerFlag, tableLocator).then((headerList)=>{
         let jsonData = []
@@ -136,7 +152,7 @@ Cypress.Commands.add("LoginAPI",()=> {
 
     cy.request("POST","https://rahulshettyacademy.com/api/ecom/auth/login",
     {userEmail: "umesh.jain@infoorigin.com", userPassword: "GondiaRice@441601"}).
-    then(function(response)
+    then((response) =>
     {
        expect(response.status).to.eq(200)
        Cypress.env('token',response.body.token);
@@ -144,7 +160,13 @@ Cypress.Commands.add("LoginAPI",()=> {
     })
 })
 
-
+/**
+ * @description This function will login to API using credentials provided
+ * @param user credential having userid and pwd
+ * @author InfoOrigin
+ * @CreatedOn Apr 2023
+ * @returns Authorised Token
+ */
 Cypress.Commands.add("LoginToken",()=> {
     const userCredentials = {
         "user": {
@@ -153,11 +175,23 @@ Cypress.Commands.add("LoginToken",()=> {
         }
     }
     
-    cy.request("POST","https://conduit.productionready.io/api/users/login/",
-    userCredentials).its('body').then( body => {
+    cy.request({
+        url: 'https://conduit.productionready.io/api/users/login/',
+        headers: { 
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: userCredentials
+    }).its('body').then( body => {
         const token = body.user.token
-        cy.wrap(token).as('token')
+        cy.wrap(token).as('authToken')
     })
+
+    // cy.request("POST","https://conduit.productionready.io/api/users/login/",
+    // userCredentials).its('body').then( body => {
+    //     const token = body.user.token
+    //     cy.wrap(token).as('token')
+    // })
 })
 
 

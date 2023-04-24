@@ -20,7 +20,7 @@ export class homePage {
     }
 
     getProductTotal() {
-        cy.get('h3 strong').then(function (element) {
+        cy.get('h3 strong').then((element)=> {
             return element.text()
         })
     }

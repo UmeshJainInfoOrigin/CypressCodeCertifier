@@ -156,6 +156,16 @@ https://www.automationteststore.com/
 $ git tag v0.1.0 
 $ git push --tags
 
+## Execute process command available in package.json
+"cy:open_process": "npx cypress open --env username=$DB_USERNAME,password=$PASSWORD"
+To execute in windows
+  set USERNAME="username"
+  set PASSWORD = "password"
+  npm run cy:open_process
+To execute in Linux
+USERNAME="username" PASSWORD = "password" npm run cy:open_process, 
+
+
 ## Install nodeJS in ubuntu
 * sudo apt install nodejs
 * node -v

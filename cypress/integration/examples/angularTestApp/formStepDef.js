@@ -250,12 +250,12 @@ Then('Actor verify tooltip text and bgcolor', function () {
     .should('have.class', 'top')
 })
 
-When('Actor click on Table&Data Tree Grid', function(){
+When('Actor click on Table&Data Tree Grid', ()=>{
   cy.contains('Tables & Data').click()
   cy.contains('Tree Grid').click()
 })
 
-Then('Actor verify details of each tree', function() {
+Then('Actor verify details of each tree', ()=> {
   cy.get('tbody').contains('Projects').click()
    cy.get('tbody tr').each(function (tableRow, index) {
      cy.wrap(tableRow).get('td').not('ngx-fs-icon')

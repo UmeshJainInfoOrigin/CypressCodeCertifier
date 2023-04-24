@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @param {*} day 
+ * @returns selected day from current date
+ */
 function selectDayFromCurrent(day){
     let date = new Date()
     date.setDate(date.getDate() + day)
@@ -33,7 +37,11 @@ export class DatepickerPage{
             cy.wrap(input).should('have.value', dateAssert)
         })
     }
-
+/**
+ * 
+ * @param {*} firstDay 
+ * @param {*} secondDay 
+ */
     selectDatepickerWithRangeFromToday(firstDay, secondDay){
         cy.contains('nb-card', 'Datepicker With Range').find('input').then( input => {
             cy.wrap(input).click()

@@ -10,7 +10,7 @@ before(() => {
 });
 
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-Given('Actor open ECommerce Page', function() {
+Given('Actor open ECommerce Page', ()=> {
     console.log('Given-I open ECommerce Page')
     cy.visit(Cypress.env('url') + "/angularpractice/")
 })

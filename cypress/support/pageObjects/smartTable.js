@@ -1,4 +1,10 @@
 export class SmartTable{
+    /**
+     * This function return Table Body
+     * @author InfoOrigin
+     * @param {locator} whichSection 
+     * @returns object
+     */
     getTableBodyHeader(whichSection){
         return cy.get(whichSection)
     }

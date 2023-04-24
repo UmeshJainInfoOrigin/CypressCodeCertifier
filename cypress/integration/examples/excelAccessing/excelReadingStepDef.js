@@ -2,7 +2,7 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
 
 Given("Actor pass excel file and validate data", (()=>{
     const filePath = Cypress.config("fileServerFolder")+"/cypress/downloads/sample.xlsx"
-    cy.task('excelToJsonConverter',filePath).then(function(result)
+    cy.task('excelToJsonConverter',filePath).then((result)=>
     {
       cy.log(result.data[1].A);
       console.log(result.data[1].B);

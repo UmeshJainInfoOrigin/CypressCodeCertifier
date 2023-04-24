@@ -28,12 +28,12 @@ Given("Actor on session login page", (() => {
         }
     }
 
-    cy.get('@token').then(token => {
+    cy.get('@authToken').then((token) => {
 
         cy.request({
             url: 'https://api.realworld.io/api/articles/',
             headers: { 
-                'Authorization': '   '+token,
+                'Authorization': 'Token '+token,
                 'Content-Type': 'application/json'
             },
             method: 'POST',

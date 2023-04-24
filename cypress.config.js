@@ -11,7 +11,16 @@ const fs = require('fs');
 
 
 async function setupNodeEvents(on, config) {
+//for process variables
+//   const username = process.env.DB_USERNAME
+//   const password = process.env.PASSWORD
+// console.log("process.env", process.env)
+//        if(!password){
+//          throw new Error(`missing PASSWORD environment variable`)
+//        }
 
+//       config.env = {username, password}
+      
   //to activate the visual testing
   initPlugin(on, config);
 
@@ -57,7 +66,7 @@ module.exports = defineConfig({
   defaultCommandTimeout: 6000,
 
   env: {
-    userName:"cypress.config.js",
+    username:"cypress.config.js",
     password: "cypress.config.js-password",
     url: "https://rahulshettyacademy.com",
     apiPost: "http://216.10.245.166/Library/Addbook.php",
@@ -80,7 +89,7 @@ module.exports = defineConfig({
 
   },
   //Cypress Cloud, project CypressCodeCertifier
-  projectId: "ac7j1u",
+  projectId: "gbecex",
   viewportHeight: 1080,
   viewportWidth: 1920,
   experimentalStudio: true,
