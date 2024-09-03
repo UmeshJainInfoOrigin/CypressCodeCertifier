@@ -190,7 +190,7 @@ USERNAME="username" PASSWORD = "password" npm run cy:open_process,
 Example
 1. https://angular.realworld.io/
 2. Sign-up or use exisiting credential
-3. Post call to https://conduit.productionready.io/api/users/login/ 
+3. Post call to https://demo.productionready.io/#/login
   with body as
   {
     "user": {
